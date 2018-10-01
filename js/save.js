@@ -143,7 +143,7 @@ function outSetVnext(arr) {
 function outSetVneAddress(arr) {
 	tab(arr);
 	data += "\"address\"\: ";
-	data += "\"" + out_set_vnext_port.value + "\"";
+	data += "\"" + out_set_vnext_address.value + "\"";
 	data += "\,\n";
 }
 function outSetVnePort(arr) {
@@ -170,6 +170,6 @@ function outSetVueUsrId(arr) {
 function outSetVueUsrAd(arr) {
 	tab(arr);
 	data += "\"alterId\"\: ";
-	data += "\"" + "64" + "\"";
+	data += "64";
 	data += "\n";
 }
