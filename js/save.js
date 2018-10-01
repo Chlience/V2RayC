@@ -157,6 +157,7 @@ function outSetVneUsers(arr) {
 	tab(arr + 1); data += "\{\n"
 	outSetVueUsrId(arr + 2);
 	outSetVueUsrAd(arr + 2);
+	outSetVueUsrSecurity(arr + 2);
 	tab(arr + 1); data += "\}\n"
 	tab(arr); data += "\]\n";
 }
@@ -171,5 +172,11 @@ function outSetVueUsrAd(arr) {
 	tab(arr);
 	data += "\"alterId\"\: ";
 	data += "64";
+	data += "\,\n";
+}
+function outSetVueUsrSecurity(arr) {
+	tab(arr);
+	data += "\"security\"\: ";
+	data += "\"" + "auto" + "\"";
 	data += "\n";
 }
