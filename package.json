@@ -1,0 +1,9 @@
+{
+	"name": "app",
+	"version": "0.1.0",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"packager": "electron-packager . V2RayC --platform=linux --arch=x64 --out=./Package --electron-version=3.0.2 --overwrite --icon=./img/ico-32.ico"
+	}
+}

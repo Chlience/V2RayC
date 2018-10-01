@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="./mdui/css/mdui.css">
+	<script src="./mdui/js/mdui.js"></script>
+	<title> V2RayC </title>
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+	<div class="mdui-container doc-container">
+		<br/><br/>
+		<center> <img src="img/head.png"> </center>
+		<div class="mdui-textfield">
+			<label class="mdui-textfield-label">服务器IP</label>
+			<input id="out_set_vnext_address" class="mdui-textfield-input" type="text"/>
+		</div>
+		<div class="mdui-textfield">
+			<label class="mdui-textfield-label">服务器端口</label>
+			<input id="out_set_vnext_port" class="mdui-textfield-input" type="text"/>
+		</div>
+		<br/><br/><div class="mdui-divider"></div><br/>
+		<div class="mdui-textfield">
+			<label class="mdui-textfield-label">本地端口</label>
+			<input id="in_port" class="mdui-textfield-input" type="text"/>
+		</div>
+		<div class="mdui-textfield">
+			<label class="mdui-textfield-label">用户 id</label>
+			<input id="out_set_vnext_users_id" class="mdui-textfield-input" type="text"/>
+		</div>
+		<br/><br/><div class="mdui-divider"></div><br/>
+		<button id='save' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block">
+			保存配置
+		</button>
+		<br/>
+		<button id='clickbegin' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block">
+			开始摇滚吧！
+		</button>
+	</div>
+</body>
+<script src="js/save.js"></script>
+</html>
