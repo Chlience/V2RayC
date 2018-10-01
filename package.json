@@ -1,9 +1,23 @@
 {
 	"name": "app",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron .",
 		"packager": "electron-packager . V2RayC --platform=win32 --arch=x64 --out=./Package --electron-version=3.0.2 --overwrite --icon=./img/ico-32.ico"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Chlience/V2RayC.git"
+	},
+	"keywords": [
+		"proxy",
+		"V2Ray"
+	],
+	"author": "Chlience",
+	"license": "GPL v3.0",
+	"bugs": {
+		"url": "https://github.com/Chlience/V2RayC/issues"
+	},
+	"homepage": "https://github.com/Chlience/V2RayC#readme"
 }
