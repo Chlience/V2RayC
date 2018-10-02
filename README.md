@@ -49,6 +49,9 @@
 
 想多了，自己写去
 
+## 代理配置
+转到 [Proxifier 使用教程](https://chlience.com/archives/634)
+
 ## 鸣谢
 感谢 [konnyakuxzy](https://github.com/konnyakuxzy) 对本应用的出现做出的巨大贡献
 
