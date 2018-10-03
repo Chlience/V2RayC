@@ -50,7 +50,15 @@
 想多了，自己写去
 
 ## 代理配置
-转到 [Proxifier 使用教程](https://chlience.com/archives/634)
+发现在配置完一切之后，貌似还是上不了谷歌？
+那是因为虽然开启了 Socks5代理 但是你的浏览器并没有走 Socks5通道
+
+有两种方案解决
+
+1. 下载 Chrome 浏览器（别的不保证能用），右键桌面快捷方式，在 `目标` 文本框中最后面加入 一个 `空格` ，然后加上 `--proxy-server="socks5://127.0.0.1:1080"`。重新从快捷启动 Chrome 就可以啦
+这个时候可以下载一个 `SwitchyOmega` 来控制代理，请自行 谷歌
+
+2. 转到 [Proxifier 使用教程](https://chlience.com/archives/634)
 
 ## 鸣谢
 感谢 [konnyakuxzy](https://github.com/konnyakuxzy) 对本应用的出现做出的巨大贡献
