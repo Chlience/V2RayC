@@ -63,6 +63,7 @@ var aut = null;
 var prc = null;
 
 aut = parseInt(fs.readFileSync(autoPath, 'utf-8'));
+
 const template = [
 	{
 		label: '操作',
@@ -139,5 +140,7 @@ function CreateTray() {
 	})
 }
 //
-app.once('ready', CreateWindow);
+
 app.once('ready', CreateTray);
+if(aut == 0) {app.once('ready', CreateWindow);}
+else {prc = spawn(coreWin32);}
