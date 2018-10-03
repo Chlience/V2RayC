@@ -1,5 +1,6 @@
 const electron = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 const app = electron.app;
 const Tray = electron.Tray;
@@ -10,6 +11,7 @@ const BrowserWindow = electron.BrowserWindow;
 const spawn = require('child_process').spawn;
 
 const coreWin32 = path.join(__dirname, 'v2ray/wv2ray.exe');
+const autoPath = path.join(__dirname, 'auto');
 
 var win = null;
 var tray = null;
@@ -60,6 +62,7 @@ function CreateWindow() {
 var aut = null;
 var prc = null;
 
+aut = parseInt(fs.readFileSync(autoPath, 'utf-8'));
 const template = [
 	{
 		label: '操作',
@@ -89,6 +92,18 @@ const template = [
 				}
 			}
 		]
+	},
+	{
+		label: '自动连接',
+		type : 'checkbox',
+		checked : aut == 1 ? true : false,
+		click: () => {
+			if (aut == 1) aut = 0;
+			else aut = 1;
+			fs.writeFile(autoPath, aut.toString(), 'utf-8', function (err){
+				if (err) msg('Can not write auto.conf!');
+			});
+		}
 	},
 	{
 		label: '配置', click: () => {

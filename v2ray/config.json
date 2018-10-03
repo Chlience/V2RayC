@@ -1,0 +1,28 @@
+{
+	"inbound": {
+		"port": ,
+		"protocol": "socks",
+		"domainOverride": ["tls","http"],
+		"settings": {
+			"auth": "noauth"
+		}
+	},
+	"outbound": {
+		"protocol": "vmess",
+		"settings": {
+			"vnext": [
+				{
+					"address": "",
+					"port": ,
+					"users": [
+						{
+							"id": "",
+							"alterId": 64,
+							"security": "auto"
+						}
+					]
+				}
+			]
+		}
+	}
+}
