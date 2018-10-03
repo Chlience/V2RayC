@@ -3,6 +3,8 @@
 
 > 一个基于 Electron 的 V2Ray 图形客户端
 
+当前版本：v1.0.1
+
 ## 主要用途
 
 * 配置 `config.json`
