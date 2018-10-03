@@ -49,6 +49,7 @@ function CreateWindow() {
 		icon: path.join(__dirname , 'img' , 'i64.png')//图标
 	}
 	win = new BrowserWindow(thewins);//新建一个窗口
+	if(aut == 1) win.hide();
 	win.loadURL('file://' + __dirname + '/index.html');
 //	win.webContents.openDevTools();//调试信息
 	win.on('close', (event) => { 
@@ -141,6 +142,6 @@ function CreateTray() {
 }
 //
 
+if(aut == 1) prc = spawn(coreWin32);
 app.once('ready', CreateTray);
-if(aut == 0) {app.once('ready', CreateWindow);}
-else {prc = spawn(coreWin32);}
+app.once('ready', CreateWindow);
