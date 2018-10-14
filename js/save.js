@@ -11,11 +11,13 @@ const v2rPath = path.join(__dirname, 'v2ray/config.json');
 const rl = readline.createInterface({input: fs.createReadStream(cfgPath)});
 
 var in_port = null;
+var in_protocol = null;
 var out_set_vnext_address = null;
 var out_set_vnext_port = null;
 var out_set_vnext_users_id = null;
 
 in_port = document.getElementById('in_port');
+in_protocol = document.getElementById('protocol_socks');
 out_set_vnext_address = document.getElementById('out_set_vnext_address');
 out_set_vnext_port = document.getElementById('out_set_vnext_port');
 out_set_vnext_users_id = document.getElementById('out_set_vnext_users_id');
@@ -35,18 +37,24 @@ var cnt = 1;
 rl.on('line', (input) => {
 	switch(cnt) {
 		case 1 : in_port.value = input; break;
-		case 2 : out_set_vnext_address.value = input; break;
-		case 3 : out_set_vnext_port.value = input; break;
-		case 4 : out_set_vnext_users_id.value = input; break;
+		case 2 : {
+			if(input == 'false') in_protocol.checked = 0;
+			else in_protocol.checked = 1;
+			break;
+		}
+		case 3 : out_set_vnext_address.value = input; break;
+		case 4 : out_set_vnext_port.value = input; break;
+		case 5 : out_set_vnext_users_id.value = input; break;
 	}
 	cnt ++;
 });
 
 document.getElementById('save').addEventListener('click', function () {
 	data = in_port.value; data += '\n'
+	data += in_protocol.checked; data += '\n'
 	data += out_set_vnext_address.value; data += '\n'
 	data += out_set_vnext_port.value; data += '\n'
-	data += out_set_vnext_users_id.value; data += '\n'
+	data += out_set_vnext_users_id.value;
 	
 	fs.writeFile(cfgPath, data, 'utf8', function(err) {
 		if (err) msg('Can not write config!'), flag = false;
@@ -73,8 +81,13 @@ function tab(arr) {for(var i = 1 ; i <= arr ; i ++) data += '\t';}
 function inbound(arr) {
 	tab(arr); data += "\"inbound\"\: \{\n";
 	inPort(arr + 1);
-	inProtocol(arr + 1);
-	inDomainOverride(arr + 1);
+	if(in_protocol.checked == 1) {
+		inProtocolSocks(arr + 1);
+		inDomainOverride(arr + 1);
+	}
+	else {
+		inProtocolhttp(arr + 1);
+	}
 	inSettings(arr + 1);
 	tab(arr); data += "\}\,\n";
 }
@@ -85,10 +98,16 @@ function inPort(arr) {
 	data += in_port.value;
 	data += "\,\n";
 }
-function inProtocol(arr) {
+function inProtocolSocks(arr) {
 	tab(arr);
 	data += "\"protocol\"\: ";
 	data += "\"socks\"";
+	data += "\,\n";
+}
+function inProtocolhttp(arr) {
+	tab(arr);
+	data += "\"protocol\"\: ";
+	data += "\"http\"";
 	data += "\,\n";
 }
 function inDomainOverride(arr) {
@@ -116,7 +135,6 @@ function outbound(arr) {
 	outSettings(arr + 1);
 	tab(arr); data += "\}\n";
 }
-
 
 function outProtocol(arr) {
 	tab(arr);

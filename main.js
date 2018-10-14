@@ -11,6 +11,7 @@ const BrowserWindow = electron.BrowserWindow;
 const spawn = require('child_process').spawn;
 
 const coreWin32 = path.join(__dirname, 'v2ray/wv2ray.exe');
+const sysproxy = path.join(__dirname, 'sysproxy/sysproxy.exe');
 const autoPath = path.join(__dirname, 'auto');
 
 var win = null;
@@ -41,7 +42,7 @@ ipc.on('clickbegin', () => {
 
 function CreateWindow() {
 	const thewins = {
-		width: 400,//宽
+		width: 370,//宽
 		height: 700,//高
 		frame: false,//无框
 		resizable: false,//是否可以调整窗口大小
@@ -62,6 +63,8 @@ function CreateWindow() {
 
 var aut = null;
 var prc = null;
+var sys = 0;
+var proxy = null;
 
 aut = parseInt(fs.readFileSync(autoPath, 'utf-8'));
 
@@ -74,14 +77,7 @@ const template = [
 				type: 'radio',
 				checked: aut == 1 ? true : false,
 				click: () => {
-					if (prc == null) {
-						if (process.platform == 'linux') {
-							//记住要先检测是否有 v2ray
-							//因为只能用 service 所以需要调用脚本
-						}
-						else
-							prc = spawn(coreWin32);
-					}
+					if (prc == null) prc = spawn(coreWin32);
 				}
 			},
 			{
@@ -103,8 +99,25 @@ const template = [
 			if (aut == 1) aut = 0;
 			else aut = 1;
 			fs.writeFile(autoPath, aut.toString(), 'utf-8', function (err){
-				if (err) msg('Can not write auto.conf!');
+				if (err) message('Can not write auto.conf!');
 			});
+		}
+	},
+	{
+		label: '系统代理',
+		type : 'checkbox',
+		checked : sys == 1 ? true : false,
+		click: () => {
+			if(sys == 1) {
+				sys = 0;
+				proxy = spawn(sysproxy , ['set' , '9']);
+				proxy = null;
+			}
+			else {
+				sys = 1;
+				proxy = spawn(sysproxy , ['set' , '2']);
+				proxy = null;
+			}
 		}
 	},
 	{
@@ -120,8 +133,11 @@ const template = [
 	},
 	{
 		label: '退出', click: () => {
-			win.destroy();
-			app.quit();
+			proxy = spawn(sysproxy , ['set' , '9']);
+			proxy.on('exit' , ()=> {
+				win.destroy();
+				app.quit();
+			})
 		}
 	}
 ]
@@ -140,7 +156,6 @@ function CreateTray() {
 		}
 	})
 }
-//
 
 if(aut == 1) prc = spawn(coreWin32);
 app.once('ready', CreateTray);
