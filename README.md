@@ -5,6 +5,10 @@
 
 当前版本：v1.0.3
 
+## 截图
+
+[![](https://i.loli.net/2018/10/15/5bc438085ff11.png)](https://i.loli.net/2018/10/15/5bc438085ff11.png)
+
 ## 主要用途
 
 * 配置 `config.json`
