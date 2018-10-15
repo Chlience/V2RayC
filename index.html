@@ -14,13 +14,13 @@
 			<div class ="mudi-row mdui-row-gapless">
 				<div class="mdui-col-xs-6">
 					<div class="mdui-textfield">
-							<label class="mdui-textfield-label">服务器IP</label>
+							<label class="mdui-textfield-label"> 服务器IP </label>
 							<input id="out_set_vnext_address" class="mdui-textfield-input" type="text" style="-webkit-app-region: no-drag">
 					</div>
 				</div>
 				<div class="mdui-col-xs-5 mdui-col-offset-xs-1">
 					<div class="mdui-textfield">
-						<label class="mdui-textfield-label">服务器端口</label>
+						<label class="mdui-textfield-label"> 服务器端口 </label>
 						<input id="out_set_vnext_port" class="mdui-textfield-input" type="text" style="-webkit-app-region: no-drag">
 					</div>
 				</div>
@@ -44,27 +44,33 @@
 		<form style="-webkit-app-region: no-drag">
 			<div class="mdui-col">
 				<label class="mdui-radio">
-					<input type="radio" name="protocol" id="protocol_socks" checked/>
+					<input type="radio" name="protocol" id="protocol_socks"/>
 					<i class="mdui-radio-icon"></i>
 					Socks
 				</label>
 			</div>
 			<div class="mdui-col">
 				<label class="mdui-radio">
-					<input type="radio" name="protocol" id="protocol_http"/>
+					<input type="radio" name="protocol" id="protocol_http" checked/>
 					<i class="mdui-radio-icon"></i>
 					Http
 				</label>
 			</div>
 		</form>
 
-		<br/><br/><div class="mdui-divider"></div><br/>
+		<br/><div class="mdui-divider"></div><br/>
+
+		<div class="mdui-col" style="-webkit-app-region: no-drag">
+			<label class="mdui-switch">
+				<input type="checkbox" id="pac" checked/>
+				<i class="mdui-switch-icon"></i>
+				&nbsp PAC
+			</label>
+		</div>
 		
+		<br/><div class="mdui-divider"></div><br/>
+
 		<button id='save' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" style="-webkit-app-region: no-drag">
-			保存配置
-		</button>
-		<br/>
-		<button id='clickbegin' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block" style="-webkit-app-region: no-drag">
 			开始摇滚吧！
 		</button>
 	</div>
