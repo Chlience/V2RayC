@@ -48,7 +48,7 @@
 
 **新功能：**
 
-选择 **系统代理** （前提：使用 http 协议 并且本地端口为 1080）
+选择 **系统代理** （前提：使用 http 协议 ，即可直接代理浏览器）
 
 自动开启 PAC ，可手动关闭（通过 V2Ray-core 内置路由功能实现）
 
@@ -65,6 +65,8 @@
 感谢 [konnyakuxzy](https://github.com/konnyakuxzy) 对本应用的出现做出的巨大贡献
 
 感谢 [V2Ray 团队](https://github.com/v2ray) 为我们构建出了如此优秀的工具
+
+感谢 [Noisyfox](https://github.com/Noisyfox) 所编写的 $sysproxy$ 以及提供的支持
 
 没有他们，就没有 V2RayC 的诞生
 
