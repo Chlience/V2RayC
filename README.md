@@ -66,7 +66,7 @@
 
 感谢 [V2Ray 团队](https://github.com/v2ray) 为我们构建出了如此优秀的工具
 
-感谢 [Noisyfox](https://github.com/Noisyfox) 所编写的 $sysproxy$ 以及提供的支持
+感谢 [Noisyfox](https://github.com/Noisyfox) 所编写的 `sysproxy` 以及提供的支持
 
 没有他们，就没有 V2RayC 的诞生
 
