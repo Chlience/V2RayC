@@ -7,6 +7,7 @@ const ipc = electron.ipcRenderer;	//通讯（发送端）
 
 const cfgPath = path.join(__dirname, 'config');
 const v2rPath = path.join(__dirname, 'v2ray/config.json');
+const sysConfig = path.join(__dirname, 'sysproxy/config');
 
 const rl = readline.createInterface({input: fs.createReadStream(cfgPath)});
 
@@ -43,10 +44,15 @@ rl.on('line', (input) => {
 });
 
 document.getElementById('save').addEventListener('click', function () {
-	data = in_port.value; data += '\n'
-	data += out_set_vnext_address.value; data += '\n'
-	data += out_set_vnext_port.value; data += '\n'
-	data += out_set_vnext_users_id.value;
+	data = in_port.value;
+	
+	fs.writeFile(sysConfig , data , 'utf8', function(err) {
+		if (err) msg('Can not write config!'), flag = false;
+	});
+
+	data += '\n'; data += out_set_vnext_address.value;
+	data += '\n'; data += out_set_vnext_port.value;
+	data += '\n'; data += out_set_vnext_users_id.value;
 	
 	fs.writeFile(cfgPath, data, 'utf8', function(err) {
 		if (err) msg('Can not write config!'), flag = false;

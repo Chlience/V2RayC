@@ -11,7 +11,8 @@ const BrowserWindow = electron.BrowserWindow;
 const spawn = require('child_process').spawn;
 
 const coreWin32 = path.join(__dirname, 'v2ray/wv2ray.exe');
-const sysproxy = path.join(__dirname, 'sysproxy/sysproxy.exe');
+const sysproxy = path.join(__dirname, 'sysproxy/sysproxy64.exe');
+const sysConfig = path.join(__dirname, 'sysproxy/config');
 const autoPath = path.join(__dirname, 'auto');
 
 var win = null;
@@ -65,6 +66,7 @@ var aut = null;
 var prc = null;
 var sys = 0;
 var proxy = null;
+var proxy_config = null;
 
 aut = parseInt(fs.readFileSync(autoPath, 'utf-8'));
 
@@ -110,12 +112,13 @@ const template = [
 		click: () => {
 			if(sys == 1) {
 				sys = 0;
-				proxy = spawn(sysproxy , ['set' , '9']);
+				proxy = spawn(sysproxy , ['off']);
 				proxy = null;
 			}
 			else {
 				sys = 1;
-				proxy = spawn(sysproxy , ['set' , '2']);
+				proxy_config = parseInt(fs.readFileSync(sysConfig, 'utf-8'));
+				proxy = spawn(sysproxy , ['global' , '127.0.0.1:' + proxy_config]);
 				proxy = null;
 			}
 		}
@@ -133,7 +136,7 @@ const template = [
 	},
 	{
 		label: '退出', click: () => {
-			proxy = spawn(sysproxy , ['set' , '9']);
+			proxy = spawn(sysproxy , ['off']);
 			proxy.on('exit' , ()=> {
 				win.destroy();
 				app.quit();
