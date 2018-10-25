@@ -39,6 +39,16 @@ rl.on('line', (input) => {
 		case 2 : out_set_vnext_address.value = input; break;
 		case 3 : out_set_vnext_port.value = input; break;
 		case 4 : out_set_vnext_users_id.value = input; break;
+		case 5 : {
+			if(input == "true") in_protocol.checked = true;
+			else in_protocol.checked = false;
+			break;
+		}
+		case 6 : {
+			if(input == "true") pac.checked = true;
+			else pac.checked = false;
+			break;
+		}
 	}
 	cnt ++;
 });
@@ -53,6 +63,8 @@ document.getElementById('save').addEventListener('click', function () {
 	data += '\n'; data += out_set_vnext_address.value;
 	data += '\n'; data += out_set_vnext_port.value;
 	data += '\n'; data += out_set_vnext_users_id.value;
+	data += '\n'; data += in_protocol.checked;
+	data += '\n'; data += pac.checked;
 	
 	fs.writeFile(cfgPath, data, 'utf8', function(err) {
 		if (err) msg('Can not write config!'), flag = false;
