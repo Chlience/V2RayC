@@ -1,9 +1,12 @@
 # V2RayC
+
 ![](https://github.com/Chlience/V2RayC/blob/master/img/head.png?raw=true)
 
 > 一个基于 Electron 的 V2Ray 图形客户端
 
 当前版本：v1.0.5
+
+> 由于某些原因，暂时停止更新，请使用其他版本
 
 ## 截图
 
